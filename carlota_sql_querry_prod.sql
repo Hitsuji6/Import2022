@@ -1,0 +1,52 @@
+SELECT
+	*
+FROM
+	(
+		SELECT
+			p.`Cod.Similar` AS pro_id_antigo_char,
+			p.`Cód.Barras` AS pro_codigo_barras,
+			p.`Descrição` AS pro_produto,
+			p.`Descrição` AS pro_produto_reduzido,
+			0 AS pro_situacao,
+			- 1 AS pro_id_preco_categoria,
+			- 1 AS pro_id_grupo,
+			- 1 AS pro_id_subgrupo,
+			COALESCE (p.UN, 'UN') AS pro_unidade1,
+			- 1 AS pro_id_fornecedor,
+			p.`Referência` AS pro_referencia,
+			0 AS pro_validade,
+			0 AS pro_desconto_maximo,
+			COALESCE (p.`NCM / SH`, '00000000') AS pro_ncm,
+			0 AS pro_peso_bruto,
+			0 AS pro_peso_liquido,
+			0 AS pro_pesavel,
+			0 AS pro_qtd_inicial,
+			0 AS pro_qtd_atual,
+			0 AS pro_qtd_minima,
+			REPLACE(REPLACE( p.Custo, '.', '' ), ',', '.') AS pro_custo_inicial,
+			REPLACE(REPLACE( p.Custo, '.', '' ), ',', '.') AS pro_custo_medio,
+			0 AS pro_preco_compra,
+			0 AS pro_desconto1,
+			0 AS pro_subtotal,
+			REPLACE(REPLACE( p.Venda, '.', '' ), ',', '.') AS pro_preco_venda1,
+			REPLACE(REPLACE( p.Venda, '.', '' ), ',', '.') AS pro_preco_venda_liquido,
+			0 AS pro_base_icms,
+			500 AS pro_tributacao,
+			99 AS pro_aliquota_icms,
+			0 AS pro_servico,
+			0 AS pro_combustivel,
+			- 1 AS pro_tipo_combustivel,
+			2 AS pro_id_firma,
+			0 AS pro_qtd_embalagem,
+			- 1 AS pro_id_tipo_fracionado,
+			0 AS pro_item_sped,
+			COALESCE (p.`Cod.ANP`, '0') AS pro_codigo_anp,
+			0 AS pro_sujeito_st,
+			0 AS pro_produto_sped,
+			- 1 AS pro_marca_id,
+			- 1 AS pro_id_isentas_icms,
+			0 AS pro_controlar_validade,
+			- 1 AS pro_natureza_receita
+		FROM
+			produtosnew p
+	) AS tmp
